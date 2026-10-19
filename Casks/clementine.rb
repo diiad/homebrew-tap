@@ -1,0 +1,43 @@
+cask "clementine" do
+  version "0.1.0"
+  sha256 "97b50825308173b12b5d9fc615abb0f6b1bb5ce663dce41b78ff0a9ee6b1d96d"
+
+  url "https://github.com/diiad/clementine-mac/releases/download/v#{version}/Clementine_#{version}_arm64.dmg"
+  name "Clémentine"
+  desc "Drag a file, hold a key, drop it on the wheel to convert it offline"
+  homepage "https://github.com/diiad/clementine-mac"
+
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
+  depends_on arch: :arm64
+  depends_on macos: ">= :ventura"
+
+  app "Clémentine.app"
+
+  # Not notarized yet: clear the quarantine flag so Gatekeeper lets it open.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Clémentine.app"],
+                   sudo: false
+  end
+
+  uninstall quit: "io.github.diadieudoucoure.clementine"
+
+  zap trash: [
+    "~/Library/Application Support/io.github.diadieudoucoure.clementine",
+    "~/Library/Caches/io.github.diadieudoucoure.clementine",
+    "~/Library/LaunchAgents/Clémentine.plist",
+    "~/Library/Preferences/io.github.diadieudoucoure.clementine.plist",
+    "~/Library/WebKit/io.github.diadieudoucoure.clementine",
+  ]
+
+  caveats <<~EOS
+    Audio and video conversions need ffmpeg:
+      brew install ffmpeg
+    Slides and higher-fidelity documents use LibreOffice:
+      brew install --cask libreoffice
+  EOS
+end

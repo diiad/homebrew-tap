@@ -13,15 +13,13 @@ cask "clementine" do
   end
 
   depends_on arch: :arm64
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   app "Clémentine.app"
 
   # Not notarized yet: clear the quarantine flag so Gatekeeper lets it open.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Clémentine.app"],
-                   sudo: false
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Clémentine.app"]
   end
 
   uninstall quit: "io.github.diadieudoucoure.clementine"

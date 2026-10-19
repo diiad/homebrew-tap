@@ -1,5 +1,5 @@
 class ClementineCli < Formula
-  desc "Offline file converter (Clémentine's engine) for the command line"
+  desc "Offline file converter (Clémentine's engine) for the command-line"
   homepage "https://github.com/diiad/clementine-mac"
   url "https://github.com/diiad/clementine-mac/releases/download/v0.1.0/clementine-cli-macos-arm64.tar.gz"
   version "0.1.0"

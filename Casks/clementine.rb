@@ -1,11 +1,11 @@
 cask "clementine" do
-  version "0.2.0"
-  sha256 "e2254dae1eb306e02bec3afd88b55a7764074a5911e3618cd89b6dbb99c2a222"
+  version "0.2.1"
+  sha256 "31e43d8c43c45cfc074289203f0198f4dfcfccbe89e3f4b6016c2a78251b9a58"
 
-  url "https://github.com/diiad/clementine-mac/releases/download/v#{version}/Clementine_#{version}_arm64.dmg"
+  url "https://github.com/diiad/clementine/releases/download/v#{version}/Clementine_#{version}_arm64.dmg"
   name "Clémentine"
   desc "Drag a file, hold a key, drop it on the wheel to convert it offline"
-  homepage "https://github.com/diiad/clementine-mac"
+  homepage "https://github.com/diiad/clementine"
 
   livecheck do
     url :url

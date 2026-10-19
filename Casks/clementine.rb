@@ -1,6 +1,6 @@
 cask "clementine" do
-  version "0.1.0"
-  sha256 "97b50825308173b12b5d9fc615abb0f6b1bb5ce663dce41b78ff0a9ee6b1d96d"
+  version "0.2.0"
+  sha256 "e2254dae1eb306e02bec3afd88b55a7764074a5911e3618cd89b6dbb99c2a222"
 
   url "https://github.com/diiad/clementine-mac/releases/download/v#{version}/Clementine_#{version}_arm64.dmg"
   name "Clémentine"
@@ -12,6 +12,7 @@ cask "clementine" do
     strategy :github_latest
   end
 
+  auto_updates true
   depends_on arch: :arm64
   depends_on macos: :ventura
 
